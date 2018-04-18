@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TEST QR</title>
+    </head>
+
+    <body>
+        <main>
+
+            <h3>Generate QR Code</h3>
+            <form>
+                <input type='text' id='name' placeholder="enter name"/>
+
+                <input type='submit'/>
+            </form>
+
+            <img src="" alt="" id='get-qr' />
+
+            <hr>
+            <h3>Scan QR</h3>
+            <button id='start-scan'>Start</button>
+
+            <video id="preview"></video>
+
+
+        </main>
+
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="instascan.min.js"></script>
+        <script src='./app.js'></script>
+
+    </body>
+</html>
