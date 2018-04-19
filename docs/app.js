@@ -7,18 +7,24 @@ $('form').on('submit', function(e) {
 });
 
 // scanner
-let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+let scanner = new Instascan.Scanner({ video: document.getElementById('video') });
 
 scanner.addListener('scan', function (content) {
-    console.log(content);
     $('#scan-result').text(content);
+    if ($('#scan-result').text() !== ''){
+        $('#capture-image-btn').removeClass('no-display');
+    }
 });
 
 $('#start-scan').click(function() {
     
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            scanner.start(cameras[0]);
+            if(cameras[1]) {
+                scanner.start(cameras[1]);
+            } else {
+                scanner.start(cameras[0]);
+            }
         } else {
             $('#scan-result').text('No camera found.');
         }
@@ -32,6 +38,21 @@ $('#stop-scan').click(function() {
     scanner.stop();
 });
 
-$('#capture-image').click(function(){
-
+$('#capture-image-btn').click(function(){
+    console.log('capture clicked');
+    takeSnapshot();
 });
+
+function takeSnapshot(){
+    let video = document.getElementById('video')
+    let image = document.getElementById('captured-img')
+    var canvas = document.getElementById("canvas");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d')
+            .drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    image.src = canvas.toDataURL();
+
+}

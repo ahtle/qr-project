@@ -3,6 +3,8 @@
     <head>
         <title>TEST QR</title>
         <meta http-equiv=“Content-Security-Policy” content=“default-src ‘self’ gap://ready file://* *; style-src ‘self’ ‘unsafe-inline’; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’”/>
+    
+        <link rel="stylesheet" href="./styles.css">
     </head>
 
     <body>
@@ -23,21 +25,19 @@
             <button id='stop-scan' style="display: inline-block;">Stop</button>
             <p id="scan-result"></p>
 
-            <video id="preview"></video>
+            <video id="video"></video>
 
-            <button id='capture-image'>Capture-image</button>
+            <button id='capture-image-btn' class="no-display">Capture-image</button>
 
             <img id='captured-img'/>
+
+            <canvas id='canvas' class="no-display"></canvas>
 
 
 
         </main>
 
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="instascan.min.js"></script>
         <script src='./app.js'></script>
 
